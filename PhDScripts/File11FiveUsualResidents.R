@@ -55,7 +55,7 @@ AllAges5P<- ggplot(AgesProp, aes(x=Age, y=CumAgePercent, colour=Sex)) +
         legend.text = element_text(size = 18),
         legend.position = "bottom")
 
-#   ggsave(AllAges5P, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/AllAges5P.pdf")
+#   ggsave(AllAges5P, width=9.32, height=7.78, units="in", file="AllAges5P.pdf")
 
 
 # ages of partnered people only
@@ -83,7 +83,7 @@ PartneredAges5P<- ggplot(AgesPropPart, aes(x=Age, y=CumAgePercent, colour=Sex)) 
         legend.position = "bottom")
 
 
-#   ggsave(PartneredAges5P, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/PartneredAges5P.pdf")
+#   ggsave(PartneredAges5P, width=9.32, height=7.78, units="in", file="PartneredAges5P.pdf")
 
 
 # working hours
@@ -114,7 +114,7 @@ WorkingHours5P<- ggplot(AgesPropHours, aes(x=HoursWorkedOrd, y=HoursPercent, fil
         legend.position = "bottom")
 
 
-#   ggsave(WorkingHours5P, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/WorkingHours5P.pdf")
+#   ggsave(WorkingHours5P, width=9.32, height=7.78, units="in", file="WorkingHours5P.pdf")
 
 # prop working
 PropWorking <-AgesPropHours %>%
@@ -239,7 +239,7 @@ File11Partnered <- ggplot() +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
 
-#   ggsave(File11Partnered, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/File11Partnered.pdf")
+#   ggsave(File11Partnered, width=9.32, height=7.78, units="in", file="File11Partnered.pdf")
 
 
 rm(men, mergedsexes, OppositeSexAgeDiffs, OppositeSexAgeDiffsLong, OppSex5P, PartneredMen, PartneredWomen, women, 
@@ -716,7 +716,7 @@ File11SoleFathers <- ggplot() +
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#    ggsave(File11SoleFathers, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/File11SoleFathers.pdf")
+#    ggsave(File11SoleFathers, width=9.32, height=7.78, units="in", file="File11SoleFathers.pdf")
 
 
 
@@ -762,7 +762,7 @@ File11SoleMothers <- ggplot() +
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#   ggsave(File11SoleMothers, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/File11SoleMothers.pdf")
+#   ggsave(File11SoleMothers, width=9.32, height=7.78, units="in", file="File11SoleMothers.pdf")
 
 
 # mothers
@@ -812,7 +812,7 @@ File11CplsMums <- ggplot() +
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#    ggsave(File11CplsMums, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/File11CplsMums.pdf")
+#    ggsave(File11CplsMums, width=9.32, height=7.78, units="in", file="File11CplsMums.pdf")
 
 
 

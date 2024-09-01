@@ -9,7 +9,7 @@ TheRandomSeeds <- readRDS("PhDRData/TheRandomSeeds.rds")
 
 # get the population data
 
-File15AllEducation <- readRDS("~/Sync/PhD/PhDMay2023/PhDRData/File15AllEducation.rds")
+File15AllEducation <- readRDS("PhDRData/File15AllEducation.rds")
 
 # how many rest homes?
 # industry code is Q860100 "Aged Care Residential Services"
@@ -33,7 +33,7 @@ sum(AgedCareHomes$NumAgedCare)
 ##################################################################
 ##################################################################
 
-TABLECODE8084 <- read.csv("~/Sync/PhD/Stats NZ csv files/Occupied dwelling type by age group of usual residents, for usual residents in occupied dwellings, 2013 Census (RC, TA)/TABLECODE8084_Data_24eaea71-6f0d-4a53-a539-cbf2aa438214.csv")
+TABLECODE8084 <- read.csv("Stats NZ csv files/Occupied dwelling type by age group of usual residents, for usual residents in occupied dwellings, 2013 Census (RC, TA)/TABLECODE8084_Data_24eaea71-6f0d-4a53-a539-cbf2aa438214.csv")
 
 # remove all younger person rows
 # these people aren't in rest homes
@@ -42,14 +42,6 @@ TABLECODE8084 <- TABLECODE8084 %>%
                            "30-34 Years", "35-39 Years")) %>%
   select(-Flags)
 
-
-# # note: 0 in "private hospital" so remove all those rows
-# 
-# TABLECODE8084NoPrivateHosp <- TABLECODE8084 %>%
-#   filter(!Occupied.dwelling.type == "Private hospital")
-# 
-# TABLECODE8084ResidentialAndCommunityCare <- TABLECODE8084 %>%
-#   filter(Occupied.dwelling.type == "Residential and community care facilities")
 
 TABLECODE8084ResidentialCareOnly <- TABLECODE8084 %>%
   filter(Occupied.dwelling.type == "Residential care for older people")
@@ -108,34 +100,7 @@ sum(BedsSample$Beds)
 RestHomesWithBedCounts <- bind_cols(AgedCareHomes, BedsSample) %>%
   select(-BedsVector)
 
-# below created too many residents, testing with different random seeds shows excessive variation
 
-# # try again with rough numbers from figure 3.4 in the aged care report, 2013 numbers, this is NOT percentiles
-# 
-# FigureThreePointFour <- data.frame(Beds = c(4.5, 14.5, 24.5, 34.5, 44.5, 54.5, 64.5, 74.5, 84.5, 94.5, 109.5, 129.5, 149.5,
-#                                             169.5),
-#                                    Percentage = c(4.5, 5, 10.5, 12, 17.5, 12, 9.5, 7, 7, 4.5, 4, 2.5, 1.5, 1))
-# 
-# # create dataset of 10,000 points
-# 
-# FigureThreePointFourSample <- FigureThreePointFour %>%
-#   mutate(Count = as.integer(((Percentage/100)*98.5)*10000))
-# 
-# FigureThreePointFourLong <- FigureThreePointFourSample %>%
-#   tidyr::uncount(weights = Count)
-# 
-# # fit a log normal
-# 
-# BedsModel <- fitdistrplus::fitdist(FigureThreePointFourLong$Beds, "lnorm", method = "mle")
-# summary(BedsModel)
-# BedsMeanLog <- BedsModel[["estimate"]][["meanlog"]]
-# BedsSDLog <- BedsModel[["estimate"]][["sdlog"]]
-# 
-# # draw a sample of 11
-# set.seed(TheRandomSeeds[128])                                              #################### seed 128 
-# AgedCareBedSizes <- round(rlnorm(n=nrow(AgedCareHomes), meanlog = BedsMeanLog, sdlog = BedsSDLog),0)
-# 
-# sum(AgedCareBedSizes)
 
 
 
@@ -204,7 +169,7 @@ RestHomeAgesPlot <- ggplot(AgesCumDist, aes(x=Age, y=CumAgePercent, colour = Sex
         legend.text = element_text(size = 18),
         legend.position = "bottom")
   
-#  ggsave(RestHomeAgesPlot, file="~//Sync/PhD/ThesisVersions/Thesis2024/PDFs/RestHomeAgesPlot.pdf", width=9.32, height=7.78, units="in")
+#  ggsave(RestHomeAgesPlot, file="RestHomeAgesPlot.pdf", width=9.32, height=7.78, units="in")
 
 
 

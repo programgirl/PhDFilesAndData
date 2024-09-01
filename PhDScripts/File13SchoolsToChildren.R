@@ -14,7 +14,7 @@ library("pals")
 ################################################################################################
 
 # bring in population data
-File12PopulationHouseholds <- readRDS("~/Sync/PhD/PhDMay2023/PhDRData/File12PopulationHouseholds.rds")
+File12PopulationHouseholds <- readRDS("PhDRData/File12PopulationHouseholds.rds")
 
 # get counts by age in the population
 CountsByAge <- File12PopulationHouseholds %>%
@@ -24,7 +24,7 @@ CountsByAge <- File12PopulationHouseholds %>%
 
 
 # #Bring in 2013 school rolls data from the Ministry of Education
-StudentRollsBySchool2013 <- read_excel("~/Sync/PhD/Ministry of Education files/School Rolls/2-Student-rolls-by-School_2010-2023.xlsx", 
+StudentRollsBySchool2013 <- read_excel("Ministry of Education files/School Rolls/2-Student-rolls-by-School_2010-2023.xlsx", 
                                        sheet = "2013", 
                                        col_types = c("text", "text", "numeric", "text", "text", "text", "skip", "skip", "text",
                                                      "text", "text", "text", "skip", "skip", "skip", "skip", "skip", "skip",
@@ -666,5 +666,5 @@ RollPropByCount <- ggplot(SchoolPropPlaced, aes(x=RollCount, y=PropPlaced, color
         legend.text = element_text(size = 8),
         legend.position = "bottom")
 
-#  ggsave(RollPropByCount, file="~//Sync/PhD/ThesisVersions/Thesis2024/PDFs/RollPropByCount.pdf", width=9.32, height=7.78, units="in")
+#  ggsave(RollPropByCount, file="RollPropByCount.pdf", width=9.32, height=7.78, units="in")
 

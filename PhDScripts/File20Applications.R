@@ -25,7 +25,7 @@ quantile(GargSD4, prob= c(0, .003, .025, .34, .50, .68, .95, .997, 1)) # seems t
 
 
 # #Bring in 2013 school rolls data from the Ministry of Education
-StudentRollsBySchool2013 <- read_excel("~/Sync/PhD/Ministry of Education files/School Rolls/2-Student-rolls-by-School_2010-2023.xlsx", 
+StudentRollsBySchool2013 <- read_excel("Ministry of Education files/School Rolls/2-Student-rolls-by-School_2010-2023.xlsx", 
                                        sheet = "2013", 
                                        col_types = c("text", "text", "numeric", "text", "text", "text", "skip", "skip", "text",
                                                      "text", "text", "text", "skip", "skip", "skip", "skip", "skip", "skip",

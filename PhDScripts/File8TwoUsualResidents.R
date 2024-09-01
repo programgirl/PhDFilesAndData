@@ -42,7 +42,7 @@ AllAges2P<- ggplot(AgesProp, aes(x=Age, y=CumAgePercent, colour=Sex)) +
         legend.text = element_text(size = 18),
         legend.position = "bottom")
 
-#   ggsave(AllAges2P, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2023DecemberTexStudio/PDFs/AllAges2P.pdf")
+#   ggsave(AllAges2P, width=9.32, height=7.78, units="in", file="AllAges2P.pdf")
 
 
 # ages of partnered people only
@@ -70,36 +70,8 @@ PartneredAges2P<- ggplot(AgesPropPart, aes(x=Age, y=CumAgePercent, colour=Sex)) 
         legend.position = "bottom")
 
 
-#   ggsave(PartneredAges2P, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2023DecemberTexStudio/PDFs/PartneredAges2P.pdf")
+#   ggsave(PartneredAges2P, width=9.32, height=7.78, units="in", file="PartneredAges2P.pdf")
 
-
-
-# # plot both all and partnered on same graph
-# 
-# AgesPropExtraVar <- AgesProp %>%
-#   mutate(Sex = ifelse(Sex == "Female", "All females", "All males"))
-# RelsPropExtraVar <- AgesPropPart %>%
-#   mutate(Sex = ifelse(Sex == "Female", "Partnered females", "Partnered males"))
-# 
-# # combine the two into one df
-# 
-# PrtPlusAll <- bind_rows(AgesPropExtraVar, RelsPropExtraVar)
-# 
-# 
-# AllandRel2P<- ggplot(PrtPlusAll, aes(x=Age, y=CumAgePercent, colour=Sex)) +
-#   geom_line(linewidth = 1) +
-#   scale_linetype_manual(values = c("solid", "solid","dashed", "dashed")) +
-#   scale_color_manual(values=c("mediumorchid2",'blue', "mediumorchid2",'blue'), name = "",
-#                      labels = c("Females", "Males","Females", "Males")) +
-#   xlab("Age (years)") + ylab("Cumulative proportion") +
-#   scale_x_continuous(limits = c(0, 110), breaks = c(20, 40, 60, 80, 100),
-#                      expand = c(0, 2)) +
-#   scale_y_continuous(limits = c(0,1), breaks = seq(0, 1, by = .2), expand = c(0, .01)) +
-#   theme(axis.text = element_text(size = 18),
-#         axis.title = element_text(size = 20),
-#         legend.title = element_blank(),
-#         legend.text = element_text(size = 18),
-#         legend.position = "bottom")
 
 
 # working hours
@@ -130,7 +102,7 @@ WorkingHours2P<- ggplot(AgesPropHours, aes(x=HoursWorkedOrd, y=HoursPercent, fil
         legend.position = "bottom")
 
 
-#   ggsave(WorkingHours2P, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2023DecemberTexStudio/PDFs/WorkingHours2P.pdf")
+#   ggsave(WorkingHours2P, width=9.32, height=7.78, units="in", file="WorkingHours2P.pdf")
 
 # prop working
 PropWorking <-AgesPropHours %>%
@@ -172,8 +144,8 @@ PartneredWomen <- TwoUsualResidents %>%
   filter(Sex == "Female", PartnershipStatus == "Partnered")
 
 # bring in required Stats NZ data
-TABLECODE8160 <- read.csv("~/Sync/PhD/Stats NZ csv files/Occupied private dwellings/Family type with type of couple/TABLECODE8160_Data_c9558eb4-30f9-4edc-9ad5-c091ac76f6d1.csv", stringsAsFactors=FALSE)
-TABLECODE8161 <- read.csv("~/Sync/PhD/Stats NZ csv files/Occupied private dwellings/Age group of people in same-sex couples in occupied private dwellings/TABLECODE8161_Data_9ae7be30-bdba-49ab-9bff-50b093df0335.csv", stringsAsFactors=FALSE)
+TABLECODE8160 <- read.csv("Stats NZ csv files/Occupied private dwellings/Family type with type of couple/TABLECODE8160_Data_c9558eb4-30f9-4edc-9ad5-c091ac76f6d1.csv", stringsAsFactors=FALSE)
+TABLECODE8161 <- read.csv("Stats NZ csv files/Occupied private dwellings/Age group of people in same-sex couples in occupied private dwellings/TABLECODE8161_Data_9ae7be30-bdba-49ab-9bff-50b093df0335.csv", stringsAsFactors=FALSE)
 
 #######################################################################################
 # generate same sex couples
@@ -295,7 +267,7 @@ File8Partnered <- ggplot() +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
 
-#   ggsave(File8Partnered, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2023DecemberTexStudio/PDFs/File8Partnered.pdf")
+#   ggsave(File8Partnered, width=9.32, height=7.78, units="in", file="File8Partnered.pdf")
 
 
 rm(men, mergedsexes, OppositeSexAgeDiffs, OppositeSexAgeDiffsLong, OppSex2P, PartneredMen, PartneredWomen, PartneredMenLeft,
@@ -475,7 +447,7 @@ File8Fathers <- ggplot() +
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#   ggsave(File8Fathers, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/File8Fathers.pdf")
+#   ggsave(File8Fathers, width=9.32, height=7.78, units="in", file="File8Fathers.pdf")
 
 
 # add kids to sole mothers
@@ -549,7 +521,7 @@ File8Mothers <- ggplot() +
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#   ggsave(File8Mothers, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/File8Mothers.pdf")
+#   ggsave(File8Mothers, width=9.32, height=7.78, units="in", file="File8Mothers.pdf")
 
 
 rm(FatherAgeDiffs, FatherAgeDiffsLong, FathKids, File8Fathers, File8Mothers, MotherAgeDiffs, MotherAgeDiffsLong, MothKids,
@@ -618,9 +590,3 @@ saveRDS(ChildPropsAtHome2, file = "PhDRData/ChildPropsAtHome2.rds")
 # # clean up environment
 # rm(list = ls())
 
-
-#######################################################################################
-#######################################################################################
-# STATS ON THE NUMBER AND PROP OF HOUSEHOLDS ARE IN THE ENDHOUSEHOLDCOMP FILE
-#######################################################################################
-#######################################################################################

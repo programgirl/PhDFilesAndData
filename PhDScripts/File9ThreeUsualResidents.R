@@ -55,7 +55,7 @@ AllAges3P<- ggplot(AgesProp, aes(x=Age, y=CumAgePercent, colour=Sex)) +
         legend.text = element_text(size = 18),
         legend.position = "bottom")
 
-#   ggsave(AllAges3P, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/AllAges3P.pdf")
+#   ggsave(AllAges3P, width=9.32, height=7.78, units="in", file="AllAges3P.pdf")
 
 
 # ages of partnered people only
@@ -83,7 +83,7 @@ PartneredAges3P<- ggplot(AgesPropPart, aes(x=Age, y=CumAgePercent, colour=Sex)) 
         legend.position = "bottom")
 
 
-#   ggsave(PartneredAges3P, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/PartneredAges3P.pdf")
+#   ggsave(PartneredAges3P, width=9.32, height=7.78, units="in", file="PartneredAges3P.pdf")
 
 
 # working hours
@@ -114,7 +114,7 @@ WorkingHours3P<- ggplot(AgesPropHours, aes(x=HoursWorkedOrd, y=HoursPercent, fil
         legend.position = "bottom")
 
 
-#   ggsave(WorkingHours3P, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/WorkingHours3P.pdf")
+#   ggsave(WorkingHours3P, width=9.32, height=7.78, units="in", file="WorkingHours3P.pdf")
 
 # prop working
 PropWorking <-AgesPropHours %>%
@@ -163,8 +163,8 @@ PartneredWomen <- ThreeUsualResidents %>%
   filter(Sex == "Female", PartnershipStatus == "Partnered")
 
 # bring in required Stats NZ data
-TABLECODE8160 <- read.csv("~/Sync/PhD/Stats NZ csv files/Occupied private dwellings/Family type with type of couple/TABLECODE8160_Data_c9558eb4-30f9-4edc-9ad5-c091ac76f6d1.csv", stringsAsFactors=FALSE)
-TABLECODE8161 <- read.csv("~/Sync/PhD/Stats NZ csv files/Occupied private dwellings/Age group of people in same-sex couples in occupied private dwellings/TABLECODE8161_Data_9ae7be30-bdba-49ab-9bff-50b093df0335.csv", stringsAsFactors=FALSE)
+TABLECODE8160 <- read.csv("Stats NZ csv files/Occupied private dwellings/Family type with type of couple/TABLECODE8160_Data_c9558eb4-30f9-4edc-9ad5-c091ac76f6d1.csv", stringsAsFactors=FALSE)
+TABLECODE8161 <- read.csv("Stats NZ csv files/Occupied private dwellings/Age group of people in same-sex couples in occupied private dwellings/TABLECODE8161_Data_9ae7be30-bdba-49ab-9bff-50b093df0335.csv", stringsAsFactors=FALSE)
 
 #######################################################################################
 # generate same sex couples
@@ -291,7 +291,7 @@ File9Partnered <- ggplot() +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
 
-#   ggsave(File9Partnered, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/File9Partnered.pdf")
+#   ggsave(File9Partnered, width=9.32, height=7.78, units="in", file="~File9Partnered.pdf")
 
 
 rm(men, mergedsexes, OppositeSexAgeDiffs, OppositeSexAgeDiffsLong, OppSex3P, PartneredMen, PartneredWomen, PartneredMenLeft,
@@ -615,39 +615,6 @@ MalesInOppSexCpls <- OppositeSexCouples %>%
 
 OppSexCouplesWithKids <- bind_rows(MuminCpls, MalesInOppSexCpls)
 
-# # add the two other kids to a sole mother
-# 
-# #--------------------------------------------------------------------------------
-# # DO THE BELOW IN ONE GO SO SEED FROM FIRST DRAW SETS THE SAMPLING
-# set.seed(TheRandomSeeds[83])                                         #################### seed 83 %%%%%%%%%%%%%%%%
-# # draw from the 4-parameter beta distribution
-# MothAgeDraw <- round(PearsonDS::rpearsonI(n=1, a=2.21, b=3.66, location=16.5, scale=33.36),0)
-# #draw the child age
-# ChildAgeDraw <- as.numeric(TheKids4SP %>%
-#   ungroup() %>%
-#   slice_sample(n=1, replace = FALSE) %>%
-#   select(Age) %>%
-#   pull(Age))
-# 
-# SelectedSoleMum <- SoleMotherUnmatchedWomen %>%
-#   filter(Age >= 15 + ChildAgeDraw) %>%
-#   slice_sample(n=1, replace = FALSE) 
-# # END IN ONE GO SECTION
-# #--------------------------------------------------------------------------------
-# 
-# FinalSPKidsHHID <- max(SoleMotherFamilies$HouseholdID) + 1
-# 
-# FinalSPKidHousehold <- bind_rows(TheKids4SP, SelectedSoleMum) %>%
-#   mutate(HouseholdID = FinalSPKidsHHID,
-#          Type = ifelse(Age < 20, "Child", "Sole Mother"))
-
-
-
-
-
-
-
-
 
 
 
@@ -673,7 +640,6 @@ CplMatchToOtherYoung <- RemainingCouples %>%
 
 PeopleForOtherYoung <- ThreeUsualResidents %>%
   filter(!ID %in% c(OppositeSexCouples$ID, TheKids$ID, SameSexF3$ID, SameSexF3C$ID, SameSexM3$ID, SameSexM3C$ID,
-                    # SoleFatherFamilies$ID, SoleMotherFamilies$ID, FinalSPKidHousehold$ID),
                     SoleFatherFamilies$ID, SoleMotherFamilies$ID),
          Age < 40)
 
@@ -698,7 +664,6 @@ CplMatchToOtherOlder <- RemainingCouples %>%
 
 PeopleForOtherOld <- ThreeUsualResidents %>%
   filter(!ID %in% c(OppositeSexCouples$ID, TheKids$ID, SameSexF3$ID, SameSexF3C$ID, SameSexM3$ID, SameSexM3C$ID,
-                    # SoleFatherFamilies$ID, SoleMotherFamilies$ID, FinalSPKidHousehold$ID, FinishedNoKidsCplsYoung$ID),
                     SoleFatherFamilies$ID, SoleMotherFamilies$ID, FinishedNoKidsCplsYoung$ID),
          Age > 55)
 
@@ -762,10 +727,9 @@ CouplesWithoutKids <- bind_rows(FinishedNoKidsCplsYoung, FinishedNoKidsCplsOlder
 
 OtherOnlyPeople <- ThreeUsualResidents %>%
   filter(!ID %in% c(OppositeSexCouples$ID, TheKids$ID, SameSexF3$ID, SameSexF3C$ID, SameSexM3$ID, SameSexM3C$ID,
-                    # SoleFatherFamilies$ID, SoleMotherFamilies$ID, FinalSPKidHousehold$ID, CouplesWithoutKids$ID))
                     SoleFatherFamilies$ID, SoleMotherFamilies$ID, CouplesWithoutKids$ID))
 
-# OthersStartNum <- max(FinalSPKidHousehold$HouseholdID) +1
+
 OthersStartNum <- max(SoleMotherFamilies$HouseholdID) +1
 
 
@@ -793,8 +757,6 @@ OtherPeople <- OtherPeopleHouseholdsList$Matched %>%
 
 
 
-
-
 ####################################################################################################
 ####################################################################################################
 # Everyone into the same household data frame
@@ -803,7 +765,6 @@ OtherPeople <- OtherPeopleHouseholdsList$Matched %>%
 
 
 ThreePersonHouseholdsComplete <- bind_rows(OppSexCouplesWithKids, SameSexF3C, SameSexM3C, SoleFatherFamilies, 
-                                           # SoleMotherFamilies, FinalSPKidHousehold, CouplesWithoutKids, OtherPeople)
                                            SoleMotherFamilies, CouplesWithoutKids, OtherPeople)
 
 duplicates <- ThreePersonHouseholdsComplete %>%
@@ -815,9 +776,6 @@ duplicates <- ThreePersonHouseholdsComplete %>%
   group_by(HouseholdID) %>%
   summarise(Count = n()) %>%
   filter(Count != 3)
-
-
-
 
 
 
@@ -894,7 +852,7 @@ File9SoleFathers <- ggplot() +
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#    ggsave(File9SoleFathers, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/File9SoleFathers.pdf")
+#    ggsave(File9SoleFathers, width=9.32, height=7.78, units="in", file="File9SoleFathers.pdf")
 
 
 
@@ -904,18 +862,9 @@ File9SoleFathers <- ggplot() +
 SoleMothers <- SoleMotherFamilies %>%
   filter(Type == "Sole Mother")
 
-# ExtraSoleMum <- FinalSPKidHousehold %>%
-#   filter(Type == "Sole Mother")
-# 
-# SoleMothers <- bind_rows(SoleMothers, ExtraSoleMum)
 
 SoleMotherKids <- SoleMotherFamilies %>%
   filter(Type == "Child")
-
-# ExtraSoleKids <- FinalSPKidHousehold %>%
-#   filter(Type == "Child")
-# 
-# SoleMotherKids <- bind_rows(SoleMotherKids, ExtraSoleKids)
 
 
 SoleMothAgeDiffs <- left_join(SoleMotherKids, SoleMothers, by = "HouseholdID") %>%
@@ -949,7 +898,7 @@ File9SoleMothers <- ggplot() +
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#   ggsave(File9SoleMothers, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/File9SoleMothers.pdf")
+#   ggsave(File9SoleMothers, width=9.32, height=7.78, units="in", file="File9SoleMothers.pdf")
 
 
 # mothers
@@ -985,7 +934,7 @@ File9CplsMums <- ggplot() +
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#    ggsave(File9CplsMums, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/File9CplsMums.pdf")
+#    ggsave(File9CplsMums, width=9.32, height=7.78, units="in", file="File9CplsMums.pdf")
 
 
 

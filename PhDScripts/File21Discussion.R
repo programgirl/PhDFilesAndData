@@ -16,7 +16,7 @@ conflict_prefer("lag","dplyr")
 
 
 
-JOB_11634_CONZUL_ <- read_excel("~/Sync/PhD/Stats NZ downloaded files/Population/JOB-11634 CONZUL .xlsx", 
+JOB_11634_CONZUL_ <- read_excel("Stats NZ downloaded files/Population/JOB-11634 CONZUL .xlsx", 
                                 sheet = "Table 1", range = "A9:G8434", col_names = TRUE, na = "..C")
 
 # remove blank and text-only note rows
@@ -405,7 +405,7 @@ File21AllCouples <- ggplot() +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
 
-#   ggsave(File21AllCouples, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/File21AllCouples.pdf")
+#   ggsave(File21AllCouples, width=9.32, height=7.78, units="in", file="File21AllCouples.pdf")
 
 
 # get percentage of difference
@@ -559,7 +559,7 @@ ChildPropsExpAch <- ggplot(CombinedChildProps, aes(x = Age, y = Fits, color = Gr
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#  ggsave(ChildPropsExpAch, file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/ChildPropsExpAch.pdf", width=10, height=6, units="in")
+#  ggsave(ChildPropsExpAch, file="ChildPropsExpAch.pdf", width=10, height=6, units="in")
 
 
 
@@ -580,7 +580,7 @@ File21PercentChangeChildProps <- ggplot(PercentDiffKids, aes(x = Age, y = Percen
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#  ggsave(File21PercentChangeChildProps, file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/File21PercentChangeChildProps.pdf", width=10, height=6, units="in")
+#  ggsave(File21PercentChangeChildProps, file="File21PercentChangeChildProps.pdf", width=10, height=6, units="in")
 
 
 
@@ -704,7 +704,7 @@ File21SoleFatherDiffs <- ggplot() +
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#  ggsave(File21SoleFatherDiffs, file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/File21SoleFatherDiffs.pdf", width=10, height=6, units="in")
+#  ggsave(File21SoleFatherDiffs, file="File21SoleFatherDiffs.pdf", width=10, height=6, units="in")
 
 
 rm(list = ls())
@@ -772,7 +772,7 @@ File21SoleMotherDiffs <- ggplot() +
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#  ggsave(File21SoleMotherDiffs, file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/File21SoleMotherDiffs.pdf", width=10, height=6, units="in")
+#  ggsave(File21SoleMotherDiffs, file="File21SoleMotherDiffs.pdf", width=10, height=6, units="in")
 
 
 rm(list = ls())
@@ -838,7 +838,7 @@ File21MotherCplsOneKidDiffs <- ggplot() +
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#  ggsave(File21MotherCplsOneKidDiffs, file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/File21MotherCplsOneKidDiffs.pdf", width=10, height=6, units="in")
+#  ggsave(File21MotherCplsOneKidDiffs, file="File21MotherCplsOneKidDiffs.pdf", width=10, height=6, units="in")
 
 
 rm(list = ls())
@@ -891,7 +891,7 @@ File21ThreePersonMumsPlusKids <- ggplot(ThreePersonKidsPlusMums, aes(x = Age, y 
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#  ggsave(File21ThreePersonMumsPlusKids, file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/File21ThreePersonMumsPlusKids.pdf", width=10, height=6, units="in")
+#  ggsave(File21ThreePersonMumsPlusKids, file="File21ThreePersonMumsPlusKids.pdf", width=10, height=6, units="in")
   
 # get the mother age quantiles
 quantile(ThreePersonMothersCpls$Age, probs = c(.1, 0.5,0.7, 0.75, .9))

@@ -21,23 +21,6 @@ File16SyntheticPopulation <- readRDS("PhDRData/File16SyntheticPopulation.rds")
 # add the number of contacts for each person
 
 
-# # look at negative binomial
-# NegBinomExamples <- data.frame(n20p5 = c(rnbinom(10000000, 20, mu=5)),
-#                                n30p5 = c(rnbinom(10000000, 30, mu=5))
-# )
-# 
-# 
-# ggplot(NegBinomExamples, aes(x=n20p5)) + geom_histogram(binwidth=.5)
-# 
-# max(NegBinomExamples$n20p5)
-# max(NegBinomExamples$n30p5)
-# 
-# median(NegBinomExamples$n20p5)
-# median(NegBinomExamples$n30p5)
-
-
-
-
 
 # use Poisson
 PoissonExamples <- data.frame(L3 = c(rpois(10000000, 3)),
@@ -118,7 +101,7 @@ ContactsGraph <- ggplot()+
   guides(colour = guide_legend(override.aes = list(size=2)))
   
 
-#   ggsave(ContactsGraph, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/ContactsGraph.pdf")
+#   ggsave(ContactsGraph, width=9.32, height=7.78, units="in", file="ContactsGraph.pdf")
 
 
 

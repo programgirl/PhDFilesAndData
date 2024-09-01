@@ -23,7 +23,7 @@ brewer.pal(n = 9, name = "Greys")
 
 
 #Bring in shapefiles
-NZAreas <- st_read("~/Sync/PhD/GISData/Area/area-unit-2013.shp")
+NZAreas <- st_read("GISData/Area/area-unit-2013.shp")
 # plot(st_geometry(NZAreas))
 
 
@@ -41,7 +41,7 @@ NZAreasDF[duplicated(NZAreasDF$AU2013_V1_), ]
 
 # All area units, no concordance
 # bring in Areas meta file
-AreasTable <- read.csv("~/Sync/PhD/GISData/2013_Areas_Table.txt", header=TRUE)
+AreasTable <- read.csv("GISData/2013_Areas_Table.txt", header=TRUE)
 #create short areas table file to merge with NZMap file
 #AU2013_V1_ is integer, convert to numeric
 AreasTable$AU2013_code <- as.numeric(AreasTable$AU2013_code)
@@ -151,7 +151,7 @@ SouthIslandMap <- tm_shape(SouthIslandTAs) +
   tm_shape(SouthIslandTAsText) +
   tm_text("DistrictShortNames", size=.6, col= "black")
 
-#  tmap_save(SouthIslandMap, "~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/SouthIslandMap.pdf", width=7.78, height=9.32, units="in")
+#  tmap_save(SouthIslandMap, "SouthIslandMap.pdf", width=7.78, height=9.32, units="in")
 
 
 
@@ -183,7 +183,7 @@ TimaruDistrictMap <- tm_shape(TimaruDistrict) +
                                                        "Winchester" = "#F7FCF5"))) +
   tm_layout(legend.show = FALSE, frame = FALSE) 
 
-#  tmap_save(TimaruDistrictMap, "~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/TimaruDistrictMap.pdf", width=7.78, height=9.32, units="in")
+#  tmap_save(TimaruDistrictMap, "TimaruDistrictMap.pdf", width=7.78, height=9.32, units="in")
 
 
 
@@ -217,7 +217,7 @@ TimaruUrbanAreaMap <- tm_shape(TimaruUrbanArea) +
   tm_text("AU2013_label", size=.7, col= "black")
 
               
-#  tmap_save(TimaruUrbanAreaMap, "~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/TimaruUrbanAreaMap.pdf", width=7.78, height=9.32, units="in")
+#  tmap_save(TimaruUrbanAreaMap, "TimaruUrbanAreaMap.pdf", width=7.78, height=9.32, units="in")
 
 
 
@@ -277,7 +277,7 @@ TimaruUrbanAreaSchools <- tm_shape(TimaruUrbanArea) +
   tm_text("SchoolName", size = .5, col = "Type", fontface = "bold", xmod = .2, ymod=.5, col.legend = tm_legend_hide()) #+
   # tm_add_legend(title = "School", labels = TimaruSchoolSP$SchoolName, text = TimaruSchoolSP$SchoolID)
 
-#  tmap_save(TimaruUrbanAreaSchools, "~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/TimaruUrbanAreaSchools.pdf", width=8.5, height=12, units="in", dpi = 600)
+#  tmap_save(TimaruUrbanAreaSchools, "TimaruUrbanAreaSchools.pdf", width=8.5, height=12, units="in", dpi = 600)
 
 
 
@@ -292,13 +292,13 @@ TimaruUrbanAreaSchools <- tm_shape(TimaruUrbanArea) +
 ############################################################################################################
 ############################################################################################################
 
-TABLECODE8002 <- read.csv("~/Sync/PhD/Stats NZ csv files/Timaru District Age by Sex for the census night population count/Age by sex/TABLECODE8002_Data_74b8c782-bb4d-4b52-995f-37e1dbe47d8d.csv")
+TABLECODE8002 <- read.csv("Stats NZ csv files/Timaru District Age by Sex for the census night population count/Age by sex/TABLECODE8002_Data_74b8c782-bb4d-4b52-995f-37e1dbe47d8d.csv")
 
 TABLECODE8002 <- TABLECODE8002 %>%
   select(-c(Flags, Year))
 
 
-write.table(TABLECODE8002, file = "~/Sync/PhD/ThesisVersions/Thesis2023DecemberTexStudio/Table8002.csv", quote = FALSE, sep = ";",
+write.table(TABLECODE8002, file = "Table8002.csv", quote = FALSE, sep = ";",
             row.names = FALSE)
 
 # get the counts

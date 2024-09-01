@@ -261,10 +261,6 @@ HouseholdsAvailable3 <- HouseholdsWith3YearOlds %>%
   filter(!HouseholdID %in% c(HouseholdsAlreadySelected3$HouseholdID, HouseholdsWith0NotSelected$HouseholdID,
                              HouseholdsECE3Only$HouseholdID))
 
-# HouseholdsAvailable3a <- HouseholdsWith3YearOlds %>%
-#   filter(!HouseholdID %in% c(HouseholdsAlreadySelected3$HouseholdID, HouseholdsWith0NotSelected$HouseholdID,
-#                              HouseholdsWithOnly3s$HouseholdID))
-
 HouseholdsWith3And0 <- bind_rows(HouseholdsAvailable3, HouseholdsWith0YearOlds) %>%
   group_by(HouseholdID) %>%
   summarise(Num = n()) %>%
@@ -299,15 +295,11 @@ nrow(HouseholdsWith3and0Only) + nrow(HouseholdsWith3And1Only) + nrow(HouseholdsW
 
 Parents3 <- File14EmployersAdded %>%
   filter(HouseholdID %in% HouseholdsAvailable3$HouseholdID) %>%
-  # filter(HouseholdID %in% HouseholdsAvailable3a$HouseholdID) %>%
   filter((Sex == "Female" & Type == "Opposite sex with child") | Type == "Sole Mother" | Type == "Sole Father") %>%
   mutate(InitialProb = ifelse(HoursWorked == "No Hours", 0.2,
                               ifelse(HoursWorked %in% c("1-9 Hours Worked", "10-19 Hours Worked", "20-29 Hours Worked",
                                                         "30-39 Hours Worked"), 0.6, 1.2)),
          ProbWithParentStatus = ifelse(Type == "Sole Mother", InitialProb*2, InitialProb),
-         # Weight = ifelse(HouseholdID %in% HouseholdsWith3And0$HouseholdID, ProbWithParentStatus*Households0Test,
-         #                 ProbWithParentStatus))
-                         # ifelse(HouseholdID %in% HouseholdsWith3And1Only$HouseholdID,
          Weight = ifelse(HouseholdID %in% HouseholdsWith3and0Only$HouseholdID, ProbWithParentStatus*DownWeight30,
                          ifelse(HouseholdID %in% HouseholdsWith3And1Only$HouseholdID, ProbWithParentStatus*DownWeight31,
                                 ifelse(HouseholdID %in% HouseholdsWith3And1And0$HouseholdID, ProbWithParentStatus*DownWeight310,
@@ -531,11 +523,6 @@ Parents1 <- File14EmployersAdded %>%
                               ifelse(HoursWorked %in% c("1-9 Hours Worked", "10-19 Hours Worked", "20-29 Hours Worked",
                                                         "30-39 Hours Worked"), 0.6, 1.2)),
          Weight = ifelse(Type == "Sole Mother", InitialProb*2, InitialProb))
-         # ProbWithParentStatus = ifelse(Type == "Sole Mother", InitialProb*2, InitialProb),
-         # Weight = ifelse(HouseholdID %in% HouseholdsWith0and2Only$HouseholdID, ProbWithParentStatus*DownWeight20,
-         #                 ifelse(HouseholdID %in% HouseholdsWith1And2Only$HouseholdID, ProbWithParentStatus*DownWeight21,
-         #                        ifelse(HouseholdID %in% HouseholdsWith0And1And2$HouseholdID, ProbWithParentStatus*DownWeight210,
-         #                               ProbWithParentStatus))))
 
 
 set.seed(TheRandomSeeds[122])                                              #################### seed 122
@@ -836,38 +823,3 @@ saveRDS(File15AllEducation, file = "PhDRData/File15AllEducation.rds")
 NumAdolescentWorking <- File15AllEducation %>%
   filter(EducationStatus == "Y", !Company =="Not employed")
 
-
-# #######################################################################
-# #######################################################################
-# # Do it by parent weight
-# #######################################################################
-# #######################################################################
-# 
-# AllParents <- File14EmployersAdded %>%
-#   filter(HouseholdID %in% c(HouseholdsWith0YearOlds$HouseholdID, HouseholdsWith1YearOlds$HouseholdID,
-#                             HouseholdsWith2YearOlds$HouseholdID, HouseholdsWith3YearOlds$HouseholdID,
-#                             HouseholdsWith4YearOlds$HouseholdID)) %>%
-#   filter((Sex == "Female" & Type == "Opposite sex with child") | Type == "Sole Mother" | Type == "Sole Father") %>%
-#   mutate(InitialProb = ifelse(HoursWorked == "No Hours", 0.2,
-#                               ifelse(HoursWorked %in% c("1-9 Hours Worked", "10-19 Hours Worked", "20-29 Hours Worked",
-#                                                         "30-39 Hours Worked"), 0.6, 1.2)),
-#          ProbWithParentStatus = ifelse(Type == "Sole Mother", InitialProb*2, InitialProb))
-# 
-# 
-# # 942 parents who have a child aged under 5 years.
-# # need average number kids per family
-# 
-# samplesize = round((nrow(AllParents)/1.74),0)
-# 
-# set.seed(TheRandomSeeds[116])                                              #################### seed 116 
-# ParentsUsingECE <- AllParents %>%
-#   slice_sample(n=samplesize, replace = FALSE)
-# 
-# ChildrenUsingECE <- File14EmployersAdded %>%
-#   filter(HouseholdID %in% ParentsUsingECE$HouseholdID, Age <5)
-# 
-# # children in ECE
-# 
-# table(ChildrenUsingECE$Age)
-# 
-# # does not work

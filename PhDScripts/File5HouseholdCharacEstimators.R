@@ -19,7 +19,7 @@ library(ggplot2)
 #############################################################
 
 
-HouseholdType <- read_csv("~/Sync/PhD/Stats NZ csv files/Occupied private dwellings/Household composition for households/TABLECODE8165_Data_HouseholdCompositionforHouseholds.csv", col_types = cols(Flags = col_skip()))
+HouseholdType <- read_csv("Stats NZ csv files/Occupied private dwellings/Household composition for households/TABLECODE8165_Data_HouseholdCompositionforHouseholds.csv", col_types = cols(Flags = col_skip()))
 
 HouseholdTotals <- HouseholdType %>%
   filter(grepl('Total', `Household composition`)) 
@@ -80,7 +80,7 @@ rm(HouseholdNoTotals, FamilyHouseholds, FamilyAndOneHouseholds, ParentsWithKids,
 # Families
 #############################################################
 
-FamilyTypes <- read_csv("~/Sync/PhD/Stats NZ csv files/Occupied private dwellings/Family type with type of couple/TABLECODE8160_Data_c9558eb4-30f9-4edc-9ad5-c091ac76f6d1.csv", col_types = cols(Flags = col_skip()))
+FamilyTypes <- read_csv("Stats NZ csv files/Occupied private dwellings/Family type with type of couple/TABLECODE8160_Data_c9558eb4-30f9-4edc-9ad5-c091ac76f6d1.csv", col_types = cols(Flags = col_skip()))
 
 TotalFamilyHouseholds <- as.numeric(HouseholdTotals[2,4] + HouseholdTotals[3,4])
 
@@ -133,7 +133,7 @@ rm(FamiliesNoTotals, FamilyTotals, FamilyTypes, HouseholdTotals, HouseholdType, 
 # Families by child dependency status
 #############################################################
 
-ChildDepend <- read_csv("~/Sync/PhD/Stats NZ csv files/Occupied private dwellings/Family type by child dependency status/TABLECODE8141_Data_da61e1a1-c19c-41a8-ac22-c025640ce237.csv", col_types = cols(Flags = col_skip()))
+ChildDepend <- read_csv("Stats NZ csv files/Occupied private dwellings/Family type by child dependency status/TABLECODE8141_Data_da61e1a1-c19c-41a8-ac22-c025640ce237.csv", col_types = cols(Flags = col_skip()))
 
 ChildDependTotals <- ChildDepend %>%
   filter(grepl('Total', `Family type by child dependency status`)) 
@@ -183,7 +183,7 @@ rm(ChildDepend, ChildDependNoTotals, ChildDependTotals, CountMixedAndUnknown, Fa
 # Sole parents
 #############################################################
 
-SoleParents <- read_csv("~/Sync/PhD/Stats NZ csv files/Occupied private dwellings/Sex of sole parent with dependent children families in occupied private dwellings/TABLECODE8153_Data_eb5ff063-cb1d-483e-9d7e-32ae56967124.csv", 
+SoleParents <- read_csv("Stats NZ csv files/Occupied private dwellings/Sex of sole parent with dependent children families in occupied private dwellings/TABLECODE8153_Data_eb5ff063-cb1d-483e-9d7e-32ae56967124.csv", 
                         col_types = cols(Flags = col_skip()))
 
 SoleParentsTotal <- SoleParents %>%
@@ -215,7 +215,7 @@ rm(SoleParents, SoleParentsTotal, NumSoleParents, SoleParentsNoTotals)
 # Grandparents
 #############################################################
 
-Grandparents <- read_csv("~/Sync/PhD/Stats NZ csv files/Occupied private dwellings/Family type for grandparents in a parental role in families 2013 census/TABLECODE8158_Data_5d605f25-7a1f-4cbd-b850-189ddedf8f2e.csv", 
+Grandparents <- read_csv("Stats NZ csv files/Occupied private dwellings/Family type for grandparents in a parental role in families 2013 census/TABLECODE8158_Data_5d605f25-7a1f-4cbd-b850-189ddedf8f2e.csv", 
                          col_types = cols(Flags = col_skip()))
 
 
@@ -267,118 +267,6 @@ rm(Grandparents)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-# #############################################################
-# # Couples draws
-# #############################################################
-# #############################################################
-# # note: commented out in thesis but can be added in if needed
-# #############################################################
-# 
-# # use skew normal, use a mean equivalent of 2.5
-# 
-# ggplot() +
-#   stat_function(fun = sn::dsn, args = list(xi=2.5, omega=7, alpha=2.5), 
-#                 aes(color = "\U003C9 = 7"), linewidth = 1.5) +
-#   stat_function(fun = sn::dsn, args = list(xi=2.5, omega=8, alpha=2.5), 
-#                 aes(color = "\U003C9 = 8"), linewidth = 1.5) +
-#   stat_function(fun = sn::dsn, args = list(xi=2.5, omega=9, alpha=2.5),
-#                 aes(color = "\U003C9 = 9"), linewidth = 1.5) +
-#   labs(x = "Age difference, male - female", y = "Proportion of couples") +
-#   scale_colour_manual("Skew normal, \U003BE = 2.5, \U003B1 = 2.5",
-#                       values = c("\U003C9 = 7" = "#1B9E77", "\U003C9 = 8" = "#D95F02", 
-#                                  "\U003C9 = 9" = "#7570B3")) +
-#   scale_x_continuous(breaks = c(-20, -10, 0, 10, 20, 30),
-#                      limits = c(-20, 30)) +
-#   theme(axis.text = element_text(size = 18),
-#         axis.title = element_text(size = 20),
-#         legend.text=element_text(size=18) ,
-#         text = element_text(size = 20),
-#         legend.position = "bottom") +
-#   guides(colour = guide_legend(override.aes = list(size=2)))
-# 
-# # note: save as pdf via the console. Use (Device Size) as the size, tick LANDSCAPE, MUST USE CAIRO_PDF
-# # OTHERWISE THE GREEK LETTERS WON'T PRINT AND THERE WILL BE ... INSTEAD.
-# 
-# # save this as "~/Sync/PhD/Thesis2020/PDFs/CplAgeDffOriginal.pdf" and 10.9 x 7.78 image
-# 
-# 
-# 
-# # decrease xi so that the median values are in the 0-5 range
-# ggplot() +
-#   stat_function(fun = sn::dsn, args = list(xi=-2, omega=7, alpha=2.5), 
-#                 aes(color = "\U003C9 = 7"), linewidth = 1.5) +
-#   stat_function(fun = sn::dsn, args = list(xi=-2, omega=8, alpha=2.5), 
-#                 aes(color = "\U003C9 = 8"), linewidth = 1.5) +
-#   stat_function(fun = sn::dsn, args = list(xi=-2, omega=9, alpha=2.5),
-#                 aes(color = "\U003C9 = 9"), linewidth = 1.5) +
-#   labs(x = "Age difference, male - female", y = "Proportion of couples") +
-#   scale_colour_manual("Skew normal, \U003BE = -2, \U003B1 = 2.5",
-#                       values = c("\U003C9 = 7" = "#1B9E77", "\U003C9 = 8" = "#D95F02", 
-#                                  "\U003C9 = 9" = "#7570B3")) +
-#   scale_x_continuous(breaks = c(-20, -10, 0, 10, 20, 30),
-#                      limits = c(-20, 30)) +
-#   theme(axis.text = element_text(size = 18),
-#         axis.title = element_text(size = 20),
-#         legend.text=element_text(size=18) ,
-#         text = element_text(size = 20),
-#         legend.position = "bottom") +
-#   guides(colour = guide_legend(override.aes = list(size=2)))
-# 
-# # save this as "~/Sync/PhD/Thesis2020/PDFs/CplAgeDiffs0.pdf" and 10.9 x 7.78 image
-# 
-# # get probabilities of extreme values, i.e. greater than 15
-# 1-sn::psn(15, xi=-2, omega=7, alpha=2.5)
-# 1-sn::psn(15, xi=-2, omega=8, alpha=2.5)
-# 1-sn::psn(15, xi=-2, omega=9, alpha=2.5)
-# 
-# # and the lower values, i.e. less than -5
-# sn::psn(-5, xi=-2, omega=7, alpha=2.5)
-# sn::psn(-5, xi=-2, omega=8, alpha=2.5)
-# sn::psn(-5, xi=-2, omega=9, alpha=2.5)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #############################################################
 #############################################################
 # Parents
@@ -393,7 +281,7 @@ rm(Grandparents)
 # Mothers
 #############################################################
 
-Mothersraw <- read_excel("~/Sync/PhD/Stats NZ downloaded files/Children/JOB-09626 CONZUL rerun.xlsx",
+Mothersraw <- read_excel("/Stats NZ downloaded files/Children/JOB-09626 CONZUL rerun.xlsx",
                                      sheet = "Table 1 rerun", range = "a9:q70", na = "..C")
 
 # number of NAs by geographic unit
@@ -490,7 +378,7 @@ MotherAgeDistributionTUA <- ggplot(MotherAgesLongTUA, aes(x=AgeDiff)) +
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#  ggsave(MotherAgeDistributionTUA, file="~/Sync/PhD/Thesis2023/PDFs/MotherAgeDistributionTUA.pdf", width=10, height=6, units="in")
+#  ggsave(MotherAgeDistributionTUA, file="MotherAgeDistributionTUA.pdf", width=10, height=6, units="in")
 
 # get median age
 median(MotherAgesLongTUA$AgeDiff)
@@ -602,7 +490,7 @@ MAACDistributionsTUA <- ggplot() +
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#  ggsave(MAACDistributionsTUA, file="~/Sync/PhD/Thesis2023/PDFs/MAACDistributionsTUA.pdf", width=10, height=6, units="in")
+#  ggsave(MAACDistributionsTUA, file="MAACDistributionsTUA.pdf", width=10, height=6, units="in")
 
 
 
@@ -689,90 +577,10 @@ rm(FinalLongCounts, FinalMotherCountsTUA, LongChildGuardianFileTUA, MAACDistribu
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #############################################################
 # Fathers
 #############################################################
-Fathersraw <- read_excel("~/Sync/PhD/Stats NZ downloaded files/Children/JOB-11611 CONZUL .xlsx", 
+Fathersraw <- read_excel("Stats NZ downloaded files/Children/JOB-11611 CONZUL .xlsx", 
                          sheet = "Table 2B sole father",  range = "a9:q70", na = "..C")
 
 # number of NAs by geographic unit
@@ -957,7 +765,7 @@ FatherAgeDistributionCR <- ggplot(FatherAgesLongCR, aes(x=AgeDiff)) +
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#  ggsave(FatherAgeDistributionCR, file="~/Sync/PhD/Thesis2023/PDFs/FatherAgeDistributionCR.pdf", width=10, height=6, units="in")
+#  ggsave(FatherAgeDistributionCR, file="FatherAgeDistributionCR.pdf", width=10, height=6, units="in")
 
 
 
@@ -1058,7 +866,7 @@ FAACDistributionsCR <- ggplot() +
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
   
-#  ggsave(FAACDistributionsCR, file="~/Sync/PhD/Thesis2023/PDFs/FAACDistributionsCR.pdf", width=10, height=6, units="in")
+#  ggsave(FAACDistributionsCR, file="FAACDistributionsCR.pdf", width=10, height=6, units="in")
 
 
 
@@ -1105,77 +913,6 @@ rm(FAACDistributionsCR, FatherAgeDistributionCR, FatherAgeModelLNCR, FatherAgeMo
    FatherParametersSNCR, Fathersraw, FinalCRLongCounts, FinalFatherCountsCR, LongChildFatherCR, PearsonsMSCCR,
    PearsonsMSCR, AICSNCR, BICSNTUA, FatherAlphaCR, FatherOmegaCR, FatherSDLogCR, FatherXiCR, i, KValueSNCR,
    LogNCR, MaxChildAge, MaxFatherAge, MinChildAge, MinFatherAge, NumFathersCR, FatherMeanLogCR)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1519,7 +1256,7 @@ saveRDS(ChildPropsAtHome, file = "PhDRData/ChildPropsAtHome.rds")
 # Sole parent dependent child proportions
 #############################################################
 # use table 8151
-TABLECODE8151 <- read_csv("~/Sync/PhD/Stats NZ csv files/Occupied private dwellings/Number of dependent children and total number of children one parent families/TABLECODE8151_Data_5dc79e76-3c16-46cc-b089-1629feb346e0.csv", 
+TABLECODE8151 <- read_csv("Stats NZ csv files/Occupied private dwellings/Number of dependent children and total number of children one parent families/TABLECODE8151_Data_5dc79e76-3c16-46cc-b089-1629feb346e0.csv", 
                           col_types = cols(Year = col_skip(), Area = col_skip(), Flags = col_skip()))
 
 SPPerHHSize <- TABLECODE8151 %>%
@@ -1548,7 +1285,7 @@ saveRDS(SoleParentRatios, file = "PhDRData/SoleParentRatios.rds")
 # Comparison with couples
 #############################################################
 
-TABLECODE8143 <- read.csv("~/Sync/PhD/Stats NZ csv files/Occupied private dwellings/NumDependentChildrenAndTotalNumberChildrenForCouplesWithChildren/TABLECODE8143_Data_d3e4c3d9-4ade-4c59-894d-34ff717bff31.csv")
+TABLECODE8143 <- read.csv("Stats NZ csv files/Occupied private dwellings/NumDependentChildrenAndTotalNumberChildrenForCouplesWithChildren/TABLECODE8143_Data_d3e4c3d9-4ade-4c59-894d-34ff717bff31.csv")
 
 CouplesWithKids <- TABLECODE8143 %>%
   select(-c(Area, Year, Flags)) %>%
@@ -1596,7 +1333,7 @@ SPHouseholdSizes[4,3] / (CouplesWithKids[4,3] + CouplesWithKids[5,3] + SPHouseho
 # Twin and triplet rates
 #############################################################
 
-MoHMultiples <- read_excel("~/Sync/PhD/Minstry of Health/Births_multiples_202102.xlsx",
+MoHMultiples <- read_excel("Minstry of Health/Births_multiples_202102.xlsx",
                            sheet = "LIVE+STILL", range = "a4:k28")
 
 MoHMultiples <- MoHMultiples %>%
@@ -1636,7 +1373,7 @@ TripletsRatePlot <- ggplot(MoHMultiples, aes(x = TwoYear, y = TripletsPer100000)
 
 BothPlots <- plot_grid(TwinsRatePlot, TripletsRatePlot, ncol = 1, nrow = 2)
 
-#  ggsave(BothPlots, file="~/Sync/PhD/Thesis2023/PDFs/TwinsAndTriplets.pdf", width=10, height=6, units="in")
+#  ggsave(BothPlots, file="TwinsAndTriplets.pdf", width=10, height=6, units="in")
 
 detach("package:cowplot", unload = TRUE)
 

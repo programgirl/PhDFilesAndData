@@ -304,7 +304,7 @@ WomenAgesSynPop <- ggplot(WomenAgeComparison, aes(x=Age, y=CumAgePercent, colour
         legend.text = element_text(size = 18),
         legend.position = "bottom")
 
-# ggsave(WomenAgesSynPop, width=9.32, height=7.78, units="in",, file="~/Sync/PhD/ThesisVersions/Thesis2023DecemberTexStudio/PDFs/WomenAgesSynPop.pdf")   
+# ggsave(WomenAgesSynPop, width=9.32, height=7.78, units="in",, file="WomenAgesSynPop.pdf")   
 # 9.32 x 7.78 image
 
 
@@ -400,7 +400,7 @@ MenAgesSynPop <- ggplot(MenAgeComparison, aes(x=Age, y=CumAgePercent, colour=Dat
         legend.text = element_text(size = 18),
         legend.position = "bottom")
 
-#  ggsave(MenAgesSynPop, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2023DecemberTexStudio/PDFs/MenAgesSynPop.pdf")   
+#  ggsave(MenAgesSynPop, width=9.32, height=7.78, units="in", file="MenAgesSynPop.pdf")   
 # 9.32 x 7.78 image
 
 

@@ -6,7 +6,7 @@ library(dplyr)
 TheRandomSeeds <- readRDS("PhDRData/TheRandomSeeds.rds")
 
 # bring in employer data
-JOB09000 <- read.csv("~/Sync/PhD/Stats NZ downloaded files/Business/MB_Ind6_GUEC_Timaru Dist.csv")
+JOB09000 <- read.csv("Stats NZ downloaded files/Business/MB_Ind6_GUEC_Timaru Dist.csv")
 
 
 # remove totals

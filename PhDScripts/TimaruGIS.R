@@ -143,7 +143,7 @@ sf_SouthIsland %>%
         rect = element_blank(),
         axis.ticks.length = unit(0, "pt"))
 # 
-# ggsave("E:/Sync/PhD/Thesis2020TexStudio/test.pdf", plot = last_plot())
+# ggsave("test.pdf", plot = last_plot())
 
 ############################################################################################################
 # Create Timaru District for plotting

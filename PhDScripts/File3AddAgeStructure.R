@@ -80,7 +80,7 @@ ElderlyAgesPlot <- ggplot(TDElderlyAgesProp, aes(x=Age, y=CumAgePercent, colour=
         legend.text = element_text(size = 18),
         legend.position = "bottom")
 
-#  ggsave(ElderlyAgesPlot, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2023DecemberTexStudio/PDFs/ElderlyAgesPlot.pdf")
+#  ggsave(ElderlyAgesPlot, width=9.32, height=7.78, units="in", file="ElderlyAgesPlot.pdf")
 # 9.32 x 7.78 image, as per default
 
 rm(ElderlyAgesPlot, TDElderlyAgesProp, TimaruDistrictElderlyAges, custom_breaksTD)

@@ -353,7 +353,7 @@ rm(AllSchoolLeavers, CRAgePyramid, CRLeaversSummary, CRPyramid, CRSchoolLeavers,
 # Add in school indicator
 ####################################################################################################
 
-AllSchoolLeavers <- read_csv("~/Sync/PhD/Ministry of Education files/Machine-Readable-School-Leavers.csv")
+AllSchoolLeavers <- read_csv("Ministry of Education files/Machine-Readable-School-Leavers.csv")
 
 CRSchoolLeavers <- AllSchoolLeavers %>%
   filter(`Region: Regional Council`=="Canterbury Region",
@@ -636,9 +636,9 @@ WorkingVsSchoolingM1 <- ggplot(WorkingHrsSummaryM, aes(x=HoursWorked, y = freq, 
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#  ggsave(WorkingVsSchoolingF1, file="~//Sync/PhD/ThesisVersions/Thesis2023DecemberTexStudio/PDFs/WorkingVsSchoolingF1.pdf", width=9.32, height=7.78, units="in")
+#  ggsave(WorkingVsSchoolingF1, file="WorkingVsSchoolingF1.pdf", width=9.32, height=7.78, units="in")
 
-#  ggsave(WorkingVsSchoolingM1, file="~//Sync/PhD/ThesisVersions/Thesis2023DecemberTexStudio/PDFs/WorkingVsSchoolingM1.pdf", width=9.32, height=7.78, units="in")
+#  ggsave(WorkingVsSchoolingM1, file="WorkingVsSchoolingM1.pdf", width=9.32, height=7.78, units="in")
 
 WorkingHrsSummaryF
 
@@ -743,9 +743,9 @@ WorkingVsSchoolingM2 <- ggplot(WorkingHrsSummaryM2, aes(x=HoursWorked, y = freq,
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#  ggsave(WorkingVsSchoolingF2, file="~//Sync/PhD/ThesisVersions/Thesis2023DecemberTexStudio/PDFs/WorkingVsSchoolingF2.pdf", width=9.32, height=7.78, units="in")
+#  ggsave(WorkingVsSchoolingF2, file="WorkingVsSchoolingF2.pdf", width=9.32, height=7.78, units="in")
 
-#  ggsave(WorkingVsSchoolingM2, file="~//Sync/PhD/ThesisVersions/Thesis2023DecemberTexStudio/PDFs/WorkingVsSchoolingM2.pdf", width=9.32, height=7.78, units="in")
+#  ggsave(WorkingVsSchoolingM2, file="WorkingVsSchoolingM2.pdf", width=9.32, height=7.78, units="in")
 
 
 # show that the hours worked remain the same for each age group

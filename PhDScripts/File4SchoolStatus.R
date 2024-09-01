@@ -31,7 +31,7 @@ File3PopulationAge <- readRDS("PhDRData/File3PopulationAge.rds")
 ####################################################################################################
 
 # bring in school roll data
-SchoolRollDataAllSchools <- read.csv("~/Sync/PhD/Ministry of Education files/School Rolls/Schools2013MOEData.csv", na.strings="..C")
+SchoolRollDataAllSchools <- read.csv("OriginalDataFiles/Schools2013MOEData.csv", na.strings="..C")
 
 # get the Cant Region counts
 SchoolRoll2013CR <- SchoolRollDataAllSchools %>%
@@ -109,7 +109,7 @@ rm(list = ls())
 ####################################################################################################
 
 
-AllSchoolLeavers <- read_csv("~/Sync/PhD/Ministry of Education files/Machine-Readable-School-Leavers.csv")
+AllSchoolLeavers <- read_csv("Ministry of Education files/Machine-Readable-School-Leavers.csv")
 
 
 
@@ -254,7 +254,7 @@ CRMaleExits <- CRExitsByYear %>%
 CRBothSexExits <- left_join(CRFemaleExits, CRMaleExits, by = "YearLeft") %>%
   mutate(PropOfFemales = round(NumFLeaders/(NumFLeaders + NumMLeaders),3))
 
-TABLECODE230 <- read_csv("~/Sync/PhD/Stats NZ csv files/CantRegionCensusUsuallyResidentPop199620012006/Age Group by Sex/TABLECODE230_Data_6ab1aeef-664b-4394-8e95-89bb1aa28a1f.csv", col_types = cols(Flags = col_skip()))
+TABLECODE230 <- read_csv("CantRegionCensusUsuallyResidentPop199620012006/Age Group by Sex/TABLECODE230_Data_6ab1aeef-664b-4394-8e95-89bb1aa28a1f.csv", col_types = cols(Flags = col_skip()))
 
 CRAgePyramid15to19F <- CRPyramid %>%
   filter(`Age group` %in% c("15 years", "16 years", "17 years", "18 years", "19 years"),

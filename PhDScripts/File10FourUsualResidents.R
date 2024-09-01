@@ -55,7 +55,7 @@ AllAges4P<- ggplot(AgesProp, aes(x=Age, y=CumAgePercent, colour=Sex)) +
         legend.text = element_text(size = 18),
         legend.position = "bottom")
 
-#   ggsave(AllAges4P, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/AllAges4P.pdf")
+#   ggsave(AllAges4P, width=9.32, height=7.78, units="in", file="AllAges4P.pdf")
 
 
 # ages of partnered people only
@@ -83,7 +83,7 @@ PartneredAges4P<- ggplot(AgesPropPart, aes(x=Age, y=CumAgePercent, colour=Sex)) 
         legend.position = "bottom")
 
 
-#   ggsave(PartneredAges4P, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/PartneredAges4P.pdf")
+#   ggsave(PartneredAges4P, width=9.32, height=7.78, units="in", file="PartneredAges4P.pdf")
 
 
 # working hours
@@ -114,7 +114,7 @@ WorkingHours4P<- ggplot(AgesPropHours, aes(x=HoursWorkedOrd, y=HoursPercent, fil
         legend.position = "bottom")
 
 
-#   ggsave(WorkingHours4P, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/WorkingHours4P.pdf")
+#   ggsave(WorkingHours4P, width=9.32, height=7.78, units="in", file="WorkingHours4P.pdf")
 
 # prop working
 PropWorking <-AgesPropHours %>%
@@ -163,8 +163,8 @@ PartneredWomen <- FourUsualResidents %>%
   filter(Sex == "Female", PartnershipStatus == "Partnered")
 
 # bring in required Stats NZ data
-TABLECODE8160 <- read.csv("~/Sync/PhD/Stats NZ csv files/Occupied private dwellings/Family type with type of couple/TABLECODE8160_Data_c9558eb4-30f9-4edc-9ad5-c091ac76f6d1.csv", stringsAsFactors=FALSE)
-TABLECODE8161 <- read.csv("~/Sync/PhD/Stats NZ csv files/Occupied private dwellings/Age group of people in same-sex couples in occupied private dwellings/TABLECODE8161_Data_9ae7be30-bdba-49ab-9bff-50b093df0335.csv", stringsAsFactors=FALSE)
+TABLECODE8160 <- read.csv("Stats NZ csv files/Occupied private dwellings/Family type with type of couple/TABLECODE8160_Data_c9558eb4-30f9-4edc-9ad5-c091ac76f6d1.csv", stringsAsFactors=FALSE)
+TABLECODE8161 <- read.csv("Stats NZ csv files/Occupied private dwellings/Age group of people in same-sex couples in occupied private dwellings/TABLECODE8161_Data_9ae7be30-bdba-49ab-9bff-50b093df0335.csv", stringsAsFactors=FALSE)
 
 #######################################################################################
 # generate same sex couples
@@ -278,7 +278,7 @@ File10Partnered <- ggplot() +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
 
-#   ggsave(File10Partnered, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/File10Partnered.pdf")
+#   ggsave(File10Partnered, width=9.32, height=7.78, units="in", file="File10Partnered.pdf")
 
 
 rm(men, mergedsexes, OppositeSexAgeDiffs, OppositeSexAgeDiffsLong, OppSex4P, PartneredMen, PartneredWomen, PartneredMenLeft,
@@ -762,7 +762,7 @@ File10SoleFathers <- ggplot() +
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#    ggsave(File10SoleFathers, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/File10SoleFathers.pdf")
+#    ggsave(File10SoleFathers, width=9.32, height=7.78, units="in", file="File10SoleFathers.pdf")
 
 
 
@@ -807,7 +807,7 @@ File10SoleMothers <- ggplot() +
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#   ggsave(File10SoleMothers, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/File10SoleMothers.pdf")
+#   ggsave(File10SoleMothers, width=9.32, height=7.78, units="in", file="File10SoleMothers.pdf")
 
 
 # mothers
@@ -850,7 +850,7 @@ File10CplsMums <- ggplot() +
         legend.position = "bottom") +
   guides(colour = guide_legend(override.aes = list(size=2)))
 
-#    ggsave(File10CplsMums, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2024/PDFs/File10CplsMums.pdf")
+#    ggsave(File10CplsMums, width=9.32, height=7.78, units="in", file="File10CplsMums.pdf")
 
 
 

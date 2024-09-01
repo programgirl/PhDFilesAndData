@@ -121,7 +121,7 @@ OnePersonAllPlot <- ggplot(OnePersonAllAges, aes(x=Age, y=CumProp, colour=Sex)) 
         legend.text = element_text(size = 18),
         legend.position = "bottom")
 
-#  ggsave(OnePersonAllPlot, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2023DecemberTexStudio/PDFs/OnePersonAllPlot.pdf")
+#  ggsave(OnePersonAllPlot, width=9.32, height=7.78, units="in", file="OnePersonAllPlot.pdf")
 
 # prop sex by hours worked
 
@@ -149,7 +149,7 @@ WorkingHours1P<- ggplot(AgesPropHours, aes(x=HoursWorkedOrd, y=HoursPercent, fil
         legend.text = element_text(size = 18),
         legend.position = "bottom")
 
-#  ggsave(WorkingHours1P, width=9.32, height=7.78, units="in", file="~/Sync/PhD/ThesisVersions/Thesis2023DecemberTexStudio/PDFs/WorkingHours1P.pdf")
+#  ggsave(WorkingHours1P, width=9.32, height=7.78, units="in", file="WorkingHours1P.pdf")
 
 
 # clean up
